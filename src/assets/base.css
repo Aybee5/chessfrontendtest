@@ -24,7 +24,7 @@
   --placeholder-text: #16171d;
 }
 
-[data-theme="dark"] {
+html.dark {
   --placeholder-text: #fff;
 }
 /* @media (prefers-color-scheme: dark) {
