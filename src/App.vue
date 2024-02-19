@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import ChessBoard from "./components/ChessBoard.vue";
 import Header from "./components/Header.vue";
+import ThemeToggle from "@/components/ThemeToggle.vue";
 
 const status = ref("Select a cell to start highlighting");
 
@@ -12,27 +13,19 @@ const chessBoard = ref<InstanceType<typeof ChessBoard> | null>(null);
   <Header />
   <main>
     <section class="grid-container">
-      <chess-board
-        @updateStatus="status = $event"
-        class="chess-board"
-        ref="chessBoard"
-      />
+      <chess-board @updateStatus="status = $event" class="chess-board" ref="chessBoard" />
 
       <section class="actions-container">
         <div class="scroll-area">
-          <div class="w-full">
+          <div class="status-area">
             <p id="status">Status: {{ status }}</p>
+            <ThemeToggle />
           </div>
           <div class="w-full">
             <TransitionGroup name="list" class="actions-ul" tag="ul">
-              <li
-                v-for="(cell, index) in chessBoard?.selectedCells"
-                :key="index"
-              >
+              <li v-for="(cell, index) in chessBoard?.selectedCells" :key="index">
                 {{ `0${index + 1}`.slice(-2) }}. {{ cell }}
-                <span
-                  v-if="index === (chessBoard?.selectedCells?.length ?? 0) - 1"
-                >
+                <span v-if="index === (chessBoard?.selectedCells?.length ?? 0) - 1">
                   <button
                     @click="chessBoard?.removeLastSelected"
                     class="iconoir--cancel"
@@ -69,13 +62,21 @@ main {
   display: block;
 }
 
+.status-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
 .grid-container {
   display: grid;
-  gap: 1.5rem;
+  gap: 2.5rem;
   margin: 1.5rem;
-  @media screen and (min-width: 768px) {
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-    height: 100vh;
+  @media screen and (min-width: 1024px) {
+    // grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    // height: 100vh;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 2.5rem;
     grid-auto-rows: min-content;
@@ -84,7 +85,7 @@ main {
 
 .chess-board {
   height: max-content;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     grid-column: 2 / span 6;
   }
 }
@@ -94,7 +95,9 @@ main {
   padding: 1rem;
   border-radius: 0.5rem;
   // height: auto;
-  @media screen and (min-width: 768px) {
+  border: 2px solid var(--dark-chess);
+  grid-row:auto;
+  @media screen and (min-width: 1024px) {
     grid-column: 8 / 12;
   }
   .scroll-area {
