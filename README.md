@@ -2,7 +2,7 @@
 
 Welcome to the [Chess.com](https://chess.com) front end programming challenge!
 
-I have implemented the challenge [here](https://master--chess-hightligher.netlify.app/)
+I have implemented the challenge [live here](https://chess-hightligher.netlify.app/)
 
 # Setup
 
