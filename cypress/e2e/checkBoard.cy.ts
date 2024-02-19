@@ -1,4 +1,7 @@
 describe("Checks board conditions", () => {
+  beforeEach(() => {
+    cy.viewport(1280, 720)
+  })
   afterEach(() => {
     cy.get(".chess-board-container").first().scrollIntoView();
   });
