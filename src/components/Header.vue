@@ -21,9 +21,9 @@
 
 <style scoped>
 .header {
-  background-color: var(--dark-body);
+  background-color: var(--dark-default);
   border-color: #e5e7eb;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
@@ -39,14 +39,6 @@
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
-}
-
-.icon {
-  background-color: #f3f4f6;
-  margin-right: 0.75rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  font-size: 2rem;
 }
 
 .title {

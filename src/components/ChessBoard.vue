@@ -98,7 +98,7 @@ defineExpose({
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s ease-out;
-  outline: none;
+  // outline: none;
   border: none;
   border: 1px solid var(--border-default);
 
@@ -119,6 +119,7 @@ defineExpose({
       content: attr(data-row);
       position: absolute;
       left: -1.5rem;
+      color: var(--placeholder-text);
     }
   }
   &.edge-columns {
@@ -126,6 +127,7 @@ defineExpose({
       content: attr(data-column);
       position: absolute;
       bottom: -1.5rem;
+      color: var(--placeholder-text);
     }
   }
 }
