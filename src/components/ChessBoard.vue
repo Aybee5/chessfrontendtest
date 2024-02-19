@@ -24,7 +24,6 @@
 import { ref } from "vue";
 const emit = defineEmits<{
   updateStatus: [status: string];
-  // updateBoard: [board: Array<string>];
 }>();
 
 const columns = "abcdefgh";
@@ -42,10 +41,10 @@ const setSelectedCell = (cell: string) => {
   if (!selectedCells.value.includes(activeCell.value)) {
     selectedCells.value.push(activeCell.value);
     cellsRef.value[activeCell.value].classList.add("selected-cell");
-    emit("updateStatus", `Cell ${activeCell.value.toUpperCase()} selected`);
+    emit("updateStatus", `Cell ${activeCell.value} selected`);
   } else {
     cellsRef.value[activeCell.value].classList.add("selected-already");
-    emit("updateStatus", `Cell ${activeCell.value.toUpperCase()} already selected`);
+    emit("updateStatus", `Cell ${activeCell.value} already selected`);
   }
 };
 
@@ -62,7 +61,8 @@ const resetBoard = () => {
 const removeLastSelected = () => {
   const lastSelected = selectedCells.value.pop();
   cellsRef.value[lastSelected!]?.classList.remove("selected-cell");
-  emit("updateStatus", `Removed last selected cell: ${lastSelected?.toUpperCase()}`);
+  cellsRef.value[activeCell.value]?.classList.remove("selected-already");
+  emit("updateStatus", `Removed last selected cell: ${lastSelected}`);
 };
 
 defineExpose({
@@ -83,10 +83,10 @@ defineExpose({
   flex-direction: column-reverse;
   flex: 1;
   .bg-light {
-    background-color: var(--primary-active);
+    background-color: var(--primary-default);
   }
   .bg-primary {
-    background-color: #b58863;
+    background-color: var(--light-default);
   }
 }
 
@@ -96,17 +96,21 @@ defineExpose({
   position: relative;
   justify-content: center;
   align-items: center;
-  text-transform: capitalize;
   cursor: pointer;
   transition: background-color 0.3s ease-out;
+  outline: none;
+  border: none;
+  border: 1px solid var(--border-default);
+
   .placeholder {
-    visibility: hidden;
+    display: none;
   }
 
   &:hover {
     .placeholder {
-      visibility: visible;
+      display: block;
       transition: visibility 0.3s ease;
+
     }
   }
 
@@ -127,10 +131,13 @@ defineExpose({
 }
 
 .selected-cell {
-  background-color: red !important;
+  background-color: var(--highlight-default) !important;
+  .placeholder {
+   display: block;
+  }
 }
 
 .selected-already {
-  background-color: #1a020b !important;
+  background-color: var(--error-default) !important;
 }
 </style>
