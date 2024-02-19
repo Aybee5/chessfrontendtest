@@ -4,6 +4,11 @@
   --primary-active: #7fa650;
   --primary-hover: #95bb4a;
 
+  --border-default: #B2C294;
+
+  --highlight-default: #9c9b4f;
+  --error-default: #cf4f4f;
+
   /* Light Colors */
   --light-default: #eeeed2;
   --light-text: #dfdfde;
