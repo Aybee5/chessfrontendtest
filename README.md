@@ -46,4 +46,4 @@ pnpm run dev
 
 # Testing
 
-The application has been tested using [Cypress](https://www.cypress.io/) and can be run with `pnpm run test:e2e:dev` during development or `pnpm run test:e2e` on headless after building
+End to End (e2e) testing has been implemented using [Cypress](https://www.cypress.io/) and can be run with `pnpm run test:e2e:dev` during development or `pnpm run test:e2e` on headless after building
