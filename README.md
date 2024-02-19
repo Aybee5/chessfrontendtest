@@ -2,12 +2,33 @@
 
 Welcome to the [Chess.com](https://chess.com) front end programming challenge!
 
-# Instructions
-1. Fork this repository.
-2. Create a VueJS application that satisfies the requirements detailed below.
-3. Provide links to your fork of this repository and a live demo of your application.
+I have implemented the challenge [here](https://master--chess-hightligher.netlify.app/)
+
+# Setup
+
+Make sure to install the dependencies:
+
+```bash
+# yarn
+yarn install
+
+# npm
+npm install
+
+# pnpm
+pnpm install --shamefully-hoist
+```
+
+## Development Server
+
+Start the development server on http://localhost:3000
+
+```bash
+pnpm run dev
+```
 
 # Application Requirements
+
 1. Create a page with a chessboard and a sidebar.
 2. On desktop devices the sidebar should be positioned to the right of the chessboard.
 3. On mobile devices the sidebar should be positioned below the chessboard.
@@ -16,5 +37,13 @@ Welcome to the [Chess.com](https://chess.com) front end programming challenge!
 6. Keep track of which squares are clicked and the order in which they're clicked.
 7. Display the information collected from step 6 in the sidebar.
 
-# Questions & Feedback
-Please contact Nick Kampa (nkampa@chess.com) with any questions or feedback regarding this challenge.
+# Additional Features
+
+1. Added a reset button that clears highlighted cells
+2. Adds a clear icon on the last selected cell that removes the highlight from the cell
+3. Adds a style if a cell that was previously selected was clicked again
+4. Adds a theme selector that toggles dark and light theme
+
+# Testing
+
+The application has been tested using [Cypress](https://www.cypress.io/) and can be run with `pnpm run test:e2e:dev` during development or `pnpm run test:e2e` on headless after building
